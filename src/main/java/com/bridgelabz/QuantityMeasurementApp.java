@@ -1,9 +1,9 @@
+
 package com.bridgelabz;
 
 public class QuantityMeasurementApp {
 
     public static class Feet {
-
         private final double value;
 
         public Feet(double value) {
@@ -26,7 +26,7 @@ public class QuantityMeasurementApp {
             return Double.compare(this.value, other.value) == 0;
         }
 
-        }
+    }
     public static class Inches {
 
         private final double value;
@@ -58,8 +58,11 @@ public class QuantityMeasurementApp {
         private final LengthUnit unit;
 
         public enum LengthUnit {
-            FEET(12.0),      // 1 foot = 12 inches
-            INCHES(1.0);
+
+            FEET(12.0),          // 1 foot = 12 inches
+            INCHES(1.0),        // base unit
+            YARDS(36.0),        // 1 yard = 36 inches
+            CENTIMETERS(0.393701); // 1 cm = 0.393701 inches
 
             private final double conversionFactor;
 
@@ -71,7 +74,6 @@ public class QuantityMeasurementApp {
                 return conversionFactor;
             }
         }
-
         public Length(double value, LengthUnit unit) {
             if (unit == null)
                 throw new IllegalArgumentException("Unit cannot be null");
@@ -102,5 +104,4 @@ public class QuantityMeasurementApp {
                     other.toBaseUnit()) == 0;
         }
     }
-    }
-
+}
