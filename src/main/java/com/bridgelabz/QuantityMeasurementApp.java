@@ -17,49 +17,42 @@ public class QuantityMeasurementApp {
         System.out.println("Sum: " + q1.add(q2, targetUnit));
     }
 
+    public static <U extends IMeasurable> void demonstrateSubtraction(
+            Quantity<U> q1, Quantity<U> q2, U targetUnit) {
+        System.out.println("Difference: " + q1.subtract(q2, targetUnit));
+    }
+
+    public static <U extends IMeasurable> void demonstrateDivision(
+            Quantity<U> q1, Quantity<U> q2) {
+        System.out.println("Ratio: " + q1.divide(q2));
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("===== LENGTH OPERATIONS =====");
+        System.out.println("===== UC12 DEMO =====");
 
-        Quantity<LengthUnit> length1 =
-                new Quantity<>(1.0, LengthUnit.FEET);
+        Quantity<LengthUnit> l1 =
+                new Quantity<>(10.0, LengthUnit.FEET);
+        Quantity<LengthUnit> l2 =
+                new Quantity<>(6.0, LengthUnit.INCHES);
 
-        Quantity<LengthUnit> length2 =
-                new Quantity<>(12.0, LengthUnit.INCHES);
+        demonstrateSubtraction(l1, l2, LengthUnit.FEET);
+        demonstrateDivision(l1, l2);
 
-        demonstrateEquality(length1, length2);
-        demonstrateConversion(length1, LengthUnit.INCHES);
-        demonstrateAddition(length1, length2, LengthUnit.FEET);
+        Quantity<WeightUnit> w1 =
+                new Quantity<>(10.0, WeightUnit.KILOGRAM);
+        Quantity<WeightUnit> w2 =
+                new Quantity<>(5.0, WeightUnit.KILOGRAM);
 
-        System.out.println("------------------------------------------------");
+        demonstrateSubtraction(w1, w2, WeightUnit.KILOGRAM);
+        demonstrateDivision(w1, w2);
 
-        System.out.println("===== WEIGHT OPERATIONS =====");
+        Quantity<VolumeUnit> v1 =
+                new Quantity<>(5.0, VolumeUnit.LITRE);
+        Quantity<VolumeUnit> v2 =
+                new Quantity<>(2.0, VolumeUnit.LITRE);
 
-        Quantity<WeightUnit> weight1 =
-                new Quantity<>(1.0, WeightUnit.KILOGRAM);
-
-        Quantity<WeightUnit> weight2 =
-                new Quantity<>(1000.0, WeightUnit.GRAM);
-
-        demonstrateEquality(weight1, weight2);
-        demonstrateConversion(weight1, WeightUnit.GRAM);
-        demonstrateAddition(weight1, weight2, WeightUnit.KILOGRAM);
-
-        System.out.println("------------------------------------------------");
-
-        System.out.println("===== VOLUME OPERATIONS =====");
-
-        Quantity<VolumeUnit> volume1 =
-                new Quantity<>(1.0, VolumeUnit.LITRE);
-
-        Quantity<VolumeUnit> volume2 =
-                new Quantity<>(1000.0, VolumeUnit.MILLILITRE);
-
-        Quantity<VolumeUnit> volume3 =
-                new Quantity<>(1.0, VolumeUnit.GALLON);
-
-        demonstrateEquality(volume1, volume2);
-        demonstrateConversion(volume3, VolumeUnit.LITRE);
-        demonstrateAddition(volume1, volume2, VolumeUnit.LITRE);
+        demonstrateSubtraction(v1, v2, VolumeUnit.LITRE);
+        demonstrateDivision(v1, v2);
     }
 }
