@@ -1,24 +1,29 @@
 package com.bridgelabz;
 
-public enum WeightUnit implements IMeasurable {
+public enum WeightUnit implements IMeasurable, SupportsArithmetic {
 
-    KILOGRAM(1.0),
-    GRAM(0.001),
-    POUND(0.453592);
+    KILOGRAM(1000.0),
+    GRAM(1.0),
+    POUND(453.592);
 
-    private final double conversionFactor;
+    private final double factor;
 
-    WeightUnit(double conversionFactor) {
-        this.conversionFactor = conversionFactor;
+    WeightUnit(double factor) {
+        this.factor = factor;
     }
 
     @Override
-    public double getConversionFactor() {
-        return conversionFactor;
+    public double toBaseUnit(double value) {
+        return value * factor;
+    }
+
+    @Override
+    public double fromBaseUnit(double baseValue) {
+        return baseValue / factor;
     }
 
     @Override
     public String getUnitName() {
-        return this.name();
+        return name();
     }
 }
