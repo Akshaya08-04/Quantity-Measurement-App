@@ -2,57 +2,27 @@ package com.bridgelabz;
 
 public class QuantityMeasurementApp {
 
-    public static <U extends IMeasurable> void demonstrateEquality(
-            Quantity<U> q1, Quantity<U> q2) {
-        System.out.println(q1 + " equals " + q2 + " ? " + q1.equals(q2));
-    }
-
-    public static <U extends IMeasurable> void demonstrateConversion(
-            Quantity<U> quantity, U targetUnit) {
-        System.out.println("Converted: " + quantity.convertTo(targetUnit));
-    }
-
-    public static <U extends IMeasurable> void demonstrateAddition(
-            Quantity<U> q1, Quantity<U> q2, U targetUnit) {
-        System.out.println("Sum: " + q1.add(q2, targetUnit));
-    }
-
-    public static <U extends IMeasurable> void demonstrateSubtraction(
-            Quantity<U> q1, Quantity<U> q2, U targetUnit) {
-        System.out.println("Difference: " + q1.subtract(q2, targetUnit));
-    }
-
-    public static <U extends IMeasurable> void demonstrateDivision(
-            Quantity<U> q1, Quantity<U> q2) {
-        System.out.println("Ratio: " + q1.divide(q2));
-    }
-
     public static void main(String[] args) {
 
-        System.out.println("===== UC12 DEMO =====");
+        Quantity<LengthUnit> l1 = new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> l2 = new Quantity<>(6, LengthUnit.INCHES);
 
-        Quantity<LengthUnit> l1 =
-                new Quantity<>(10.0, LengthUnit.FEET);
-        Quantity<LengthUnit> l2 =
-                new Quantity<>(6.0, LengthUnit.INCHES);
+        System.out.println("Addition: " +
+                l1.add(l2, LengthUnit.FEET));
 
-        demonstrateSubtraction(l1, l2, LengthUnit.FEET);
-        demonstrateDivision(l1, l2);
+        System.out.println("Subtraction: " +
+                l1.subtract(l2, LengthUnit.FEET));
 
-        Quantity<WeightUnit> w1 =
-                new Quantity<>(10.0, WeightUnit.KILOGRAM);
-        Quantity<WeightUnit> w2 =
-                new Quantity<>(5.0, WeightUnit.KILOGRAM);
+        System.out.println("Division: " +
+                l1.divide(l2, LengthUnit.FEET));
 
-        demonstrateSubtraction(w1, w2, WeightUnit.KILOGRAM);
-        demonstrateDivision(w1, w2);
+        Quantity<TemperatureUnit> t1 =
+                new Quantity<>(100, TemperatureUnit.CELSIUS);
 
-        Quantity<VolumeUnit> v1 =
-                new Quantity<>(5.0, VolumeUnit.LITRE);
-        Quantity<VolumeUnit> v2 =
-                new Quantity<>(2.0, VolumeUnit.LITRE);
+        Quantity<TemperatureUnit> t2 =
+                new Quantity<>(212, TemperatureUnit.FAHRENHEIT);
 
-        demonstrateSubtraction(v1, v2, VolumeUnit.LITRE);
-        demonstrateDivision(v1, v2);
+        System.out.println("Temperature Equal: " +
+                t1.equals(t2));
     }
 }

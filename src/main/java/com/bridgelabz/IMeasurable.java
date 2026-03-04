@@ -2,15 +2,9 @@ package com.bridgelabz;
 
 public interface IMeasurable {
 
-    double getConversionFactor();
+    double toBaseUnit(double value);
 
-    default double convertToBaseUnit(double value) {
-        return value * getConversionFactor();
-    }
-
-    default double convertFromBaseUnit(double baseValue) {
-        return baseValue / getConversionFactor();
-    }
+    double fromBaseUnit(double baseValue);
 
     String getUnitName();
 }
