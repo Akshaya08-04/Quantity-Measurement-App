@@ -1,28 +1,28 @@
 package com.bridgelabz;
 
-public class QuantityMeasurementApp {
+import com.bridgelabz.controller.QuantityMeasurementController;
+import com.bridgelabz.repository.IQuantityRepository;
+import com.bridgelabz.repository.QuantityRepositoryImpl;
+import com.bridgelabz.service.IQuantityMeasurementService;
+import com.bridgelabz.service.QuantityMeasurementServiceImpl;
 
+public class QuantityMeasurementApp {
     public static void main(String[] args) {
 
-        Quantity<LengthUnit> l1 = new Quantity<>(10, LengthUnit.FEET);
-        Quantity<LengthUnit> l2 = new Quantity<>(6, LengthUnit.INCHES);
+        IQuantityRepository repository = new QuantityRepositoryImpl();
+        IQuantityMeasurementService service = new QuantityMeasurementServiceImpl(repository);
+        QuantityMeasurementController controller = new QuantityMeasurementController(service);
 
-        System.out.println("Addition: " +
-                l1.add(l2, LengthUnit.FEET));
+        Quantity<LengthUnit> length1 = new Quantity<>(1, LengthUnit.FEET);
+        Quantity<LengthUnit> length2 = new Quantity<>(12, LengthUnit.INCHES);
 
-        System.out.println("Subtraction: " +
-                l1.subtract(l2, LengthUnit.FEET));
+        System.out.println("Comparison Result: " + controller.compareQuantities(length1, length2));
+        System.out.println("Converted Quantity: " + controller.convertQuantity(length1, LengthUnit.INCHES));
+        System.out.println("Addition Result: " + controller.addQuantities(length1, length2));
 
-        System.out.println("Division: " +
-                l1.divide(l2, LengthUnit.FEET));
+        Quantity<TemperatureUnit> temp1 = new Quantity<>(0, TemperatureUnit.CELSIUS);
+        System.out.println("Temperature Conversion: " + controller.convertQuantity(temp1, TemperatureUnit.FAHRENHEIT));
 
-        Quantity<TemperatureUnit> t1 =
-                new Quantity<>(100, TemperatureUnit.CELSIUS);
-
-        Quantity<TemperatureUnit> t2 =
-                new Quantity<>(212, TemperatureUnit.FAHRENHEIT);
-
-        System.out.println("Temperature Equal: " +
-                t1.equals(t2));
+        controller.displayAllRecords();
     }
 }
