@@ -14,6 +14,10 @@ public class Quantity<U extends IMeasurable> {
         this.unit = unit;
     }
 
+    public double getValue() {
+        return value;
+    }
+
     public U getUnit() {
         return unit;
     }
@@ -57,8 +61,7 @@ public class Quantity<U extends IMeasurable> {
         if (this == obj) return true;
         if (!(obj instanceof Quantity<?> other)) return false;
 
-        return Double.compare(this.toBase(),
-                ((Quantity<?>) obj).toBase()) == 0;
+        return Double.compare(this.toBase(), other.toBase()) == 0;
     }
 
     @Override

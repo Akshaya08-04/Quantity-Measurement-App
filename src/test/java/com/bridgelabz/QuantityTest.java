@@ -164,4 +164,5 @@ public class QuantityTest {
                 new Quantity<>(10, TemperatureUnit.CELSIUS);
         assertNotEquals(t1, t2);
     }
+
 }
