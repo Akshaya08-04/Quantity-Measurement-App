@@ -1,7 +1,6 @@
 package com.bridgelabz;
 
 import com.bridgelabz.repository.IQuantityRepository;
-import com.bridgelabz.repository.QuantityRepositoryImpl;
 import com.bridgelabz.service.IQuantityMeasurementService;
 import org.junit.jupiter.api.Test;
 

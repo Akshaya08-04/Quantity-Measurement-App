@@ -1,59 +1,70 @@
 package com.bridgelabz.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "quantity_measurements")
 public class QuantityMeasurementEntity {
 
-    private int id;
-    private double thisValue;
-    private String thisUnit;
-    private double thatValue;
-    private String thatUnit;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Double value;
+
+    private String unit;
+
     private String measurementType;
-    private String operation;
+
+    private String operationType;
+
+    private Double secondValue;
+
+    private String secondUnit;
+
     private Double resultValue;
+
     private String resultUnit;
-    private String resultMessage;
 
     public QuantityMeasurementEntity() {
     }
 
-    public int getId() {
+    public QuantityMeasurementEntity(Long id, Double value, String unit, String measurementType,
+                                     String operationType, Double secondValue, String secondUnit,
+                                     Double resultValue, String resultUnit) {
+        this.id = id;
+        this.value = value;
+        this.unit = unit;
+        this.measurementType = measurementType;
+        this.operationType = operationType;
+        this.secondValue = secondValue;
+        this.secondUnit = secondUnit;
+        this.resultValue = resultValue;
+        this.resultUnit = resultUnit;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public double getThisValue() {
-        return thisValue;
+    public Double getValue() {
+        return value;
     }
 
-    public void setThisValue(double thisValue) {
-        this.thisValue = thisValue;
+    public void setValue(Double value) {
+        this.value = value;
     }
 
-    public String getThisUnit() {
-        return thisUnit;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setThisUnit(String thisUnit) {
-        this.thisUnit = thisUnit;
-    }
-
-    public double getThatValue() {
-        return thatValue;
-    }
-
-    public void setThatValue(double thatValue) {
-        this.thatValue = thatValue;
-    }
-
-    public String getThatUnit() {
-        return thatUnit;
-    }
-
-    public void setThatUnit(String thatUnit) {
-        this.thatUnit = thatUnit;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getMeasurementType() {
@@ -64,12 +75,28 @@ public class QuantityMeasurementEntity {
         this.measurementType = measurementType;
     }
 
-    public String getOperation() {
-        return operation;
+    public String getOperationType() {
+        return operationType;
     }
 
-    public void setOperation(String operation) {
-        this.operation = operation;
+    public void setOperationType(String operationType) {
+        this.operationType = operationType;
+    }
+
+    public Double getSecondValue() {
+        return secondValue;
+    }
+
+    public void setSecondValue(Double secondValue) {
+        this.secondValue = secondValue;
+    }
+
+    public String getSecondUnit() {
+        return secondUnit;
+    }
+
+    public void setSecondUnit(String secondUnit) {
+        this.secondUnit = secondUnit;
     }
 
     public Double getResultValue() {
@@ -86,13 +113,5 @@ public class QuantityMeasurementEntity {
 
     public void setResultUnit(String resultUnit) {
         this.resultUnit = resultUnit;
-    }
-
-    public String getResultMessage() {
-        return resultMessage;
-    }
-
-    public void setResultMessage(String resultMessage) {
-        this.resultMessage = resultMessage;
     }
 }

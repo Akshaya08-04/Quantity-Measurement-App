@@ -1,13 +1,13 @@
 package com.bridgelabz.repository;
 
 import com.bridgelabz.entity.QuantityMeasurementEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-public interface IQuantityRepository {
-    void save(QuantityMeasurementEntity entity);
-    List<QuantityMeasurementEntity> getAllMeasurements();
-    List<QuantityMeasurementEntity> getMeasurementsByType(String measurementType);
-    List<QuantityMeasurementEntity> getMeasurementsByOperation(String operation);
-    int getTotalCount();
-    void deleteAll();
+@Repository
+public interface IQuantityRepository extends JpaRepository<QuantityMeasurementEntity, Long> {
+    List<QuantityMeasurementEntity> findByOperationType(String operationType);
+    long countByOperationType(String operationType);
 }

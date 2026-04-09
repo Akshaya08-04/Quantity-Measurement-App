@@ -1,7 +1,6 @@
 package com.bridgelabz;
 
 import com.bridgelabz.entity.QuantityMeasurementEntity;
-import com.bridgelabz.repository.QuantityDatabaseRepositoryImpl;
 import com.bridgelabz.util.DatabaseInitializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
