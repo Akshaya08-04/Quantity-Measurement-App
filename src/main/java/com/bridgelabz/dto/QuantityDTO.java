@@ -1,25 +1,35 @@
 package com.bridgelabz.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 public class QuantityDTO {
 
-    private double value;
+    @NotNull(message = "Value cannot be null")
+    @PositiveOrZero(message = "Value must be zero or positive")
+    private Double value;
+
+    @NotBlank(message = "Unit cannot be blank")
     private String unit;
+
+    @NotBlank(message = "Measurement type cannot be blank")
     private String measurementType;
 
     public QuantityDTO() {
     }
 
-    public QuantityDTO(double value, String unit, String measurementType) {
+    public QuantityDTO(Double value, String unit, String measurementType) {
         this.value = value;
         this.unit = unit;
         this.measurementType = measurementType;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
