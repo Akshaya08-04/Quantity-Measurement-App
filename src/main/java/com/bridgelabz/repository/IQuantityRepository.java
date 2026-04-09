@@ -5,5 +5,9 @@ import java.util.List;
 
 public interface IQuantityRepository {
     void save(QuantityMeasurementEntity entity);
-    List<QuantityMeasurementEntity> findAll();
+    List<QuantityMeasurementEntity> getAllMeasurements();
+    List<QuantityMeasurementEntity> getMeasurementsByType(String measurementType);
+    List<QuantityMeasurementEntity> getMeasurementsByOperation(String operation);
+    int getTotalCount();
+    void deleteAll();
 }

@@ -1,34 +1,44 @@
 package com.bridgelabz.controller;
 
-import com.bridgelabz.IMeasurable;
-import com.bridgelabz.Quantity;
-import com.bridgelabz.service.IQuantityMeasurementService;
+import com.bridgelabz.dto.QuantityDTO;
+import com.bridgelabz.entity.QuantityMeasurementEntity;
+import com.bridgelabz.service.QuantityServiceImpl;
+
+import java.util.List;
 
 public class QuantityMeasurementController {
 
-    private final IQuantityMeasurementService service;
+    private final QuantityServiceImpl service;
 
-    public QuantityMeasurementController(IQuantityMeasurementService service) {
+    public QuantityMeasurementController(QuantityServiceImpl service) {
         this.service = service;
     }
 
-    public <T extends Enum<T> & IMeasurable> boolean compareQuantities(Quantity<T> q1, Quantity<T> q2) {
-        return service.compare(q1, q2);
+    public boolean performComparison(QuantityDTO first, QuantityDTO second) {
+        return service.compare(first, second);
     }
 
-    public <T extends Enum<T> & IMeasurable> Quantity<T> convertQuantity(Quantity<T> quantity, T targetUnit) {
-        return service.convert(quantity, targetUnit);
+    public double performConversion(QuantityDTO source, String targetUnit) {
+        return service.convert(source, targetUnit);
     }
 
-    public <T extends Enum<T> & IMeasurable> Quantity<T> addQuantities(Quantity<T> q1, Quantity<T> q2) {
-        return service.add(q1, q2);
+    public List<QuantityMeasurementEntity> getAllMeasurements() {
+        return service.getAllMeasurements();
     }
 
-    public <T extends Enum<T> & IMeasurable> Quantity<T> subtractQuantities(Quantity<T> q1, Quantity<T> q2) {
-        return service.subtract(q1, q2);
+    public List<QuantityMeasurementEntity> getMeasurementsByType(String type) {
+        return service.getMeasurementsByType(type);
     }
 
-    public void displayAllRecords() {
-        System.out.println(service.getAllRecords());
+    public List<QuantityMeasurementEntity> getMeasurementsByOperation(String operation) {
+        return service.getMeasurementsByOperation(operation);
+    }
+
+    public int getTotalCount() {
+        return service.getTotalCount();
+    }
+
+    public void deleteAllMeasurements() {
+        service.deleteAll();
     }
 }
