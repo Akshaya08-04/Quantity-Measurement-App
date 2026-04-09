@@ -3,7 +3,6 @@ package com.bridgelabz;
 import com.bridgelabz.repository.IQuantityRepository;
 import com.bridgelabz.repository.QuantityRepositoryImpl;
 import com.bridgelabz.service.IQuantityMeasurementService;
-import com.bridgelabz.service.QuantityMeasurementServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
