@@ -10,6 +10,7 @@ public class QuantityMeasurementEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "quantity_value")
     private Double value;
 
     private String unit;
