@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: measurement-service
+
+  datasource:
+    url: jdbc:h2:mem:measurementdb
+
+    driverClassName: org.h2.Driver
+
+    username: sa
+
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+
+            scope:
+              - email
+              - profile
+
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://localhost:8761/eureka/
